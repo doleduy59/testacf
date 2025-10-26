@@ -1,0 +1,127 @@
+.event-post {
+    width: 100vw;
+    padding: 0 12.5%;
+    background-color: white;
+    box-sizing: border-box;
+}
+
+.event-post p,
+.event-post h1,
+.event-post h2,
+.event-post h3 {
+    margin: 0;
+}
+
+.event-post h3 {
+    font-size: 18;
+    font-weight: 500;
+    color: #0068C3;
+}
+
+.event-post h2 {
+    margin: 2rem 0;
+    font-weight: 700;
+
+}
+
+.event-post .thumbnail_event {
+    width: 100%;
+    height: calc(100vw/1600*630);
+    overflow: hidden;
+    object-fit: cover;
+}
+
+.event-post .title-container {
+    display: flex;
+    margin: 2rem 0;
+
+}
+
+.event-post .title-container .title {
+    margin: 0;
+    color: #0068C3;
+    font-size: calc(100vw/1600*32);
+    font-weight: 400;
+    width: calc(100vw/1600*760);
+}
+
+.event-post .title-container div {
+    flex-grow: 1;
+    display: flex;
+    justify-content: end;
+}
+
+.btn-chevron-right {
+    width: fit-content;
+}
+
+.event-post .location-container {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    gap: 0.5rem;
+}
+
+.event-post .location-container p {
+    margin: 0;
+    width: fit-content;
+    height: 2.2rem;
+    box-sizing: border-box;
+    border: 1px solid rgb(255, 98, 30, 0.5);
+    display: flex;
+    align-items: center;
+    padding: 0 0.8rem;
+}
+
+.event-post .content-container {
+    width: 100%;
+    height: max-content;
+    display: flex;
+    flex-direction: row;
+
+}
+
+.event-post .content-container .author-list {
+    flex-grow: 1;
+    height: 100%;
+    border-right: solid 1px black;
+}
+
+.event-post .content-container .content {
+    width: 60%;
+    box-sizing: border-box;
+    padding: 0 0 0 2rem;
+}
+
+.event-post .content-container .author-list .author-item {
+    display: flex;
+}
+
+.event-post .content-container .author-list .avt {
+    height: 5.14rem;
+    width: 5.14rem;
+    border: solid rgb(255, 98, 30, 0.5);
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+}
+
+.event-post .content-container .author-list img {
+    height: 4.8rem;
+    width: 4.86rem;
+    border-radius: 50%;
+}
+
+.event-post .content-container .author-list .author-item {
+    display: flex;
+    gap: 1rem;
+}
+
+.event-post .content-container .author-list .author-item .author-content {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 0.5rem;
+}

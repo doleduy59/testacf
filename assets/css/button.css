@@ -1,0 +1,60 @@
+.btn-chevron-right {
+    box-sizing: border-box;
+    font-size: calc(1rem*14/16);
+    font-weight: bold;
+    height: 2rem;
+    padding: 1rem 2rem 1rem 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: white;
+    color: rgb(255, 98, 30);
+    border: 1px solid rgb(255, 98, 30, 0.5);
+    border-radius: calc(1rem/16*5);
+    flex: 0.8;
+    transition: all 0.3s;
+    position: relative;
+    max-width: fit-content;
+
+}
+
+.btn-chevron-right i {
+    position: absolute;
+    right: 1rem;
+    transition: all 0.3s;
+}
+
+.btn-chevron-right:hover {
+    background-color: #FF621E;
+    color: white;
+}
+
+.btn-chevron-right:hover i {
+    right: 0.8rem;
+}
+
+
+
+
+
+.btn-chevron-right-color {
+    box-sizing: border-box;
+    font-size: 12px;
+    font-weight: bold;
+    height: 32px;
+    width: 108px;
+    gap: 0.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: white;
+    color: rgb(255, 98, 30);
+    border: 1px solid #FF621E;
+    flex: 0.8;
+    transition: all 0.3s;
+}
+
+.btn-chevron-right-color:hover {
+    background-color: #FF621E;
+    color: white;
+}
