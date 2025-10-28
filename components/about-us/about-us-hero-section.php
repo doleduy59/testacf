@@ -1,11 +1,12 @@
 <?php
-    $page_id = get_option('page_on_front'); 
+    $page_id = get_the_ID(); 
+    //echo "page_id: " . $page_id;
     $hero_video = get_field('hero_video', $page_id);
     $title = '';
     $content = '';
-    $field_key = get_field('field_key',$page_id);
-    ///echo "key: " . $field_key;
-    $fields = acf_get_fields( $field_key);
+    $key_field = get_field('key_field',$page_id);
+    //echo "key: " . $key_field;
+    $fields = acf_get_fields( $key_field);
     if ( $fields ) {
     $field_count = count($fields);
     } else {
@@ -22,7 +23,7 @@
     <div class="content">
         <div class="hero-text">
             <h1>
-                <?php
+                <?php /* 
                     for($i = 1; $i <= $field_count; $i++){
                         $part_field_name = "hero_title_{$i}";
                         $highlight_field_name = "hero_title_highlight_{$i}";
@@ -36,11 +37,15 @@
                             $title .=  '<span class="highlight">' . esc_html($highlight) . ' ' . '</span>';
                         }
                     }
-                echo trim($title); 
+                echo trim($title); */
+                ?>
+                <?php  
+                    $hero_title = get_field('hero_title', $page_id);
+                    echo $hero_title;
                 ?>
             </h1>
             <p>
-                <?php
+                <?php /*
                     for($i = 1; $i <= $field_count; $i++){
                         $part_field_name = "hero_content_{$i}";
                         $highlight_field_name = "hero_content_highlight_{$i}";
@@ -54,7 +59,11 @@
                             $content .=  '<span class="highlight">' . esc_html($highlight) . ' ' . '</span>';
                         }
                     }
-                echo trim($content); 
+                echo trim($content); */
+                ?>
+                <?php  
+                    $hero_content = get_field('hero_content', $page_id);
+                    echo $hero_content;
                 ?>
             </p>
         </div>
