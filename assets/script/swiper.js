@@ -11,12 +11,15 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 
 
-    const swiperGridElement = document.querySelector('.mySwiperGrid');
+    const swiperGridElement = document.querySelector('.mySwiperGridEnded');
     if(swiperGridElement){
-        const swiper = new Swiper(".mySwiperGrid", {
+        const totalSlides = swiperGridElement.querySelectorAll('.swiper-slide').length;
+        const numRows = totalSlides <= 4 ? 1 : 2;
+        const swiper = new Swiper(".mySwiperGridEnded", {
             slidesPerView: 3,
+            
             grid: {
-                rows: 2,
+                rows: numRows,
             },
             spaceBetween: 30,
             pagination: {
@@ -24,8 +27,8 @@ document.addEventListener('DOMContentLoaded', function() {
                 clickable: true,
             },
             navigation: {
-                nextEl: ".mySwiperGrid .swiper-button-next", 
-                prevEl: ".mySwiperGrid .swiper-button-prev",
+                nextEl: ".mySwiperGridEnded .swiper-button-next", 
+                prevEl: ".mySwiperGridEnded .swiper-button-prev",
             },
         });
     }

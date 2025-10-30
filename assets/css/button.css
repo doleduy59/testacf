@@ -16,7 +16,7 @@
     transition: all 0.3s;
     position: relative;
     max-width: fit-content;
-
+    text-decoration: none;
 }
 
 .btn-chevron-right i {
@@ -28,11 +28,39 @@
 .btn-chevron-right:hover {
     background-color: #FF621E;
     color: white;
+    text-decoration: none;
 }
 
 .btn-chevron-right:hover i {
     right: 0.8rem;
 }
+
+.grey_btn{
+    box-sizing: border-box;
+    font-size: calc(1rem*14/16);
+    font-weight: bold;
+    height: 2rem;
+    line-height: 1.5rem;
+    padding: 0rem 1rem 0rem 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: white;
+    color: rgb(177, 177, 177);
+    border: 2px solid rgb(177, 177, 177);
+    border-radius: 0.5rem;
+    flex: 0.8;
+    transition: all 0.3s;
+    position: relative;
+    max-width: fit-content;
+    text-decoration: none;
+}
+.grey_btn:hover {
+    background-color: rgb(177, 177, 177);
+    text-decoration: none;
+    color: white;
+}
+
 
 
 
@@ -53,9 +81,11 @@
     border: 2px solid #FF621E;
     flex: 0.8;
     transition: all 0.3s;
+    text-decoration: none;
 }
 
 .btn-chevron-right-color:hover {
     background-color: #FF621E;
     color: white;
+    text-decoration: none;
 }
