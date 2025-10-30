@@ -4,7 +4,7 @@
  */
 
 use SimplePie\Parse\Date;
-
+wp_enqueue_style( 'event-post-css' );
 ?>
 <?php
 get_header();
@@ -28,7 +28,7 @@ get_header();
     // Xử lý dữ liệu thời gian
     $time_start = DateTime::createFromFormat('H:i:s', $time_start_raw);
     $time_end = DateTime::createFromFormat('H:i:s', $time_end_raw);
-    $time_date = DateTime::createFromFormat('d/m/Y', $time_date_raw);
+    $time_date = DateTime::createFromFormat('Ymd', $time_date_raw);
     
 
     if ($time_start) {

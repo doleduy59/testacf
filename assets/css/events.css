@@ -1,0 +1,138 @@
+.events-banner{
+    width: 100%;
+    height: calc(100vw/1600*900);
+}
+ .events-banner .mySwiper{
+    width: 100%;
+    height: 100%;
+ }
+ .events-banner .swiper-button-next::after, .events-banner .swiper-button-prev::after {
+    content: none !important;
+    background: none !important;
+    font-size: 0 !important;
+ }
+ .events-banner .swiper-button-next img, .events-banner .swiper-button-prev img {
+    width: 44px;
+    height: 44px;
+ }
+
+
+
+
+
+
+.event_list{
+    display: flex;
+    flex-direction: column;
+    box-sizing: border-box;
+    padding: 4rem  12.5%  4rem  12.5%;
+    gap: 2rem;
+    width: 100%; 
+}
+.event_list .soon{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: 37.5rem;
+    overflow: visible
+}
+.event_list h2{
+    margin: 0;
+    margin-bottom: 1.5rem;
+    font-size: 1.5rem;
+    font-weight: 500;
+}
+.event_list .mySwiperGridSoon {
+    width: 100%;
+    height: 33.5rem;
+    padding: 10px;
+}
+.event_list .swiper-wrapper {
+    overflow: visible;
+    position: relative; 
+    z-index: 1;
+}   
+.event_list .swiper-slide {
+    position: relative; 
+    z-index: 2;
+    background: white;
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08), 0 2px 4px rgba(0, 0, 0, 0.04);
+}
+
+.event_list .swiper-slide img {
+    width: 100%;
+    height: 14.375rem;
+    object-fit: cover;
+}
+.event_list .swiper-slide .container{
+    flex-grow: 1;
+    box-sizing: border-box;
+    padding: 1.2rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: start;
+}
+.event_list .swiper-slide .container .content{
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
+}
+.event_list .swiper-slide .container .content p,
+.event_list .swiper-slide .container .content h3{
+    margin: 0;
+}
+.event_list .swiper-slide .container .content h3{
+    font-size: 1.25rem;
+    font-weight: 600;
+}
+
+.event_list .swiper-slide .tax{
+    width: 100%;
+    display: flex;
+    gap: 1.5rem;
+}
+.event_list .swiper-slide .tax p {
+    font-size: 0.875rem;
+    color: #F0500A;
+}
+.event_list .swiper-slide .tax img{
+    height: 0.875rem;
+    width: 0.875rem;
+    object-fit: cover;
+}
+.event_list .swiper-slide .location{
+    min-height: 4.5rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
+}
+
+
+
+
+
+.event_list .end{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: 72.5rem;
+    overflow: visible
+
+}
+.event_list .mySwiperGrid {
+    width: 100%;
+    height: 100%;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 10px;
+}
+
+.event_list .mySwiperGrid .swiper-slide {
+    height: calc((100% - 30px) / 2) !important;
+}

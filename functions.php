@@ -21,31 +21,45 @@ add_action( 'after_setup_theme', 'theme_setup' );
 
 
 function theme_script() {
+    //global styles
     wp_enqueue_style('theme-style', get_stylesheet_uri(), array(), '1.0');
     wp_enqueue_style( 'main-css', get_template_directory_uri() . '/assets/css/main.css', array(), '1.0', 'all');
-    wp_enqueue_style( 'about-us-css', get_template_directory_uri() . '/assets/css/about-us.css', array(), '1.0', 'all');
-    wp_enqueue_style( 'button-css', get_template_directory_uri() . '/assets/css/button.css', array(), '1.0', 'all');
-    wp_enqueue_style( 'event-post-css', get_template_directory_uri() . '/assets/css/event-post.css', array(), '1.0', 'all');
-    wp_enqueue_style( 'demo-hardcode-css', get_template_directory_uri() . '/assets/css/home-demo-hardcode.css', array(), '1.0', 'all');
-
-
     wp_enqueue_style( 'inter-tight-font', 'https://fonts.googleapis.com/css2?family=Inter+Tight:wght@100;200;300;400;500;600;700&display=swap', array(), '1.0', 'all' );
     wp_enqueue_style('font-awesome','https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css',array(),'6.0.0');
+    wp_enqueue_style( 'button-css', get_template_directory_uri() . '/assets/css/button.css', array(), '1.0', 'all');
+    //component styles
+    wp_register_style( 'about-us-css', get_template_directory_uri() . '/assets/css/about-us.css', array(), '1.0', 'all');
+    wp_register_style( 'event-post-css', get_template_directory_uri() . '/assets/css/event-post.css', array(), '1.0', 'all');
+    wp_register_style( 'demo-hardcode-css', get_template_directory_uri() . '/assets/css/home-demo-hardcode.css', array(), '1.0', 'all');
+    wp_register_style( 'events-css', get_template_directory_uri() . '/assets/css/events.css', array(), '1.0', 'all');
 
 }
 add_action( 'wp_enqueue_scripts', 'theme_script' );
 
 
 //swiper js and css
-function my_enqueue_swiper() {
-    wp_enqueue_style( 'swiper-css', 'https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css', array(), '11.0.0', 'all' );
-    wp_enqueue_script( 'swiper-js', 'https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js', array('jquery'), '11.0.0', true );
+function my_register_swiper_assets() {
+    wp_register_script( 'swiper-lib', 'https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js', array(), '11.0.0', true);
+    wp_register_style( 'swiper-css', 'https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css', array(), '11.0.0' );
+    // Tên Handle: 'my-swiper-init' (Nên dùng tên phân biệt, không dùng tên file)
+    // Đường dẫn: '/js/swiper.js'
+    // PHỤ THUỘC: array('swiper-lib') - Đảm bảo code khởi tạo chạy SAU thư viện gốc
+    wp_register_script( 'my-swiper-init', get_template_directory_uri() . '/assets/script/swiper.js', array('swiper-lib'), '1.0', true);
 }
-add_action( 'wp_enqueue_scripts', 'my_enqueue_swiper' );
-function my_custom_swiper_init() {
-    wp_enqueue_script( 'custom-swiper-init', get_template_directory_uri() . '/js/custom-swiper.js', array('swiper-js'), '1.0', true );
+add_action( 'wp_enqueue_scripts', 'my_register_swiper_assets' );
+
+
+// field readonly
+function acf_make_field_readonly( $field ) {
+    $readonly_fields = array(
+        'banner_event_key'
+    );
+    if ( in_array($field['name'], $readonly_fields)) {
+        $field['disabled'] = 1;
+    }
+    return $field;
 }
-add_action( 'wp_enqueue_scripts', 'my_custom_swiper_init' );
+add_filter('acf/prepare_field', 'acf_make_field_readonly');
 
 
 
@@ -60,13 +74,10 @@ function add_ajax_scripts() {
     ));
 }
 add_action('wp_enqueue_scripts', 'add_ajax_scripts');
-
 // Xử lý AJAX
 function load_category_posts() {
     check_ajax_referer('ajax_nonce', 'nonce');
-    
     $cat_id = intval($_POST['cat_id']);
-    
     $args = array(
         'post_type'      => 'post',
         'posts_per_page' => 6,
@@ -74,14 +85,11 @@ function load_category_posts() {
         'orderby'        => 'date',
         'order'          => 'DESC',
     );
-    
     if ($cat_id !== 0) {
         $args['cat'] = $cat_id;
     }
-    
     $query = new WP_Query($args);
     $html = '';
-    
     if ($query->have_posts()) {
         $html .= "<div class='posts-list'>";
         while ($query->have_posts()) {
@@ -95,7 +103,6 @@ function load_category_posts() {
     } else {
         $html = 'Không tìm thấy bài viết nào.';
     }
-    
     wp_send_json_success($html);
 }
 add_action('wp_ajax_load_category_posts', 'load_category_posts');
@@ -106,12 +113,9 @@ add_action('wp_ajax_nopriv_load_category_posts', 'load_category_posts');
 
 // Thêm Khóa API cho Google Maps (Sử dụng Filter acf/fields/google_map/api)
 function my_acf_google_map_api( $api ) {
-    
     // ĐIỀN KHÓA API CỦA BẠN VÀO DÒNG DƯỚI ĐÂY
     $api['key'] = 'ĐIỀN_KHOÁ_API_CỦA_BẠN_VÀO_ĐÂY'; 
-    
     // Đảm bảo bạn đã bật các dịch vụ cần thiết (Maps JavaScript API, Geocoding API, Places API) trên Google Cloud Platform
-    
     return $api;
 }
 add_filter('acf/fields/google_map/api', 'my_acf_google_map_api');
